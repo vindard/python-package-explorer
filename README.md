@@ -1,5 +1,7 @@
 # Package Explorer
-A small tool I built to explore through the various methods in a python package from the terminal. The tool currently works only for unpacking methods that sit within a library directory inside the package (methods that are 2 levels away). e.g. methods within the `timeit` library
+A small tool I built to explore through the various methods in a python package from the terminal. The tool currently works only for unpacking methods that sit within a library directory inside the package (methods that are 2 levels away). e.g. methods within the `timeit` library.
+
+The tool currently supports both **plain-text** and **regex** params for conducting queries.
 
 ---
 
