@@ -1,5 +1,5 @@
-# `python3-indy` Package Explorer
-A small tool I built to explore through the various methods in the `python3-indy` package from the terminal.
+# Package Explorer
+A small tool I built to explore through the various methods in a python package from the terminal. The tool currently works only for unpacking methods that sit within a library directory inside the package (methods that are 2 levels away). e.g. methods within the `timeit` library
 
 ---
 
@@ -7,41 +7,40 @@ A small tool I built to explore through the various methods in the `python3-indy
 
 1. Run `$ python3`
 
-1. Import the `IndyMethods` class with `$ from indy_explore import IndyMethods`
+1. Import package to be explored: `import timeit`
 
-1. Assign to variable `$ i = IndyMethods()`
+1. Import the `Explore` class with `$ from explore import Explore`
 
-1. Pass search strings to see results. Example:
+1. Assign to variable `$ e = Explore(timeit)`
+
+1. Pass search strings to see methods available. Example:
     ```
-    $ i.find('schema')
+    $ e.find('thread')
     
-    [{'issuer_create_schema': 'anoncreds'},
-     {'build_get_schema_request': 'ledger'},
-     {'build_schema_request': 'ledger'},
-     {'parse_get_schema_response': 'ledger'}]
-  
+    {'thread_info': 'sys',
+     'thread_time': 'time',
+     'thread_time_ns': 'time'}
     ```
+1. Pass search strings to see docstrings for methods found. Example: 
     ```
-    $ i.describe('create_schema')
+    $ e.describe('thread')
     
-    {'issuer_create_schema': 'anoncreds'}
-    Call with: indy.anoncreds.issuer_create_schema
+    Call with: timeit.sys.thread_info
+    sys.thread_info
 
-        Create credential schema entity that describes credential attributes list and allows credentials
-        interoperability.
+    A struct sequence holding information about the thread implementation.
+    -----
 
-        Schema is public and intended to be shared with all anoncreds workflow actors usually by publishing SCHEMA transaction
-        to Indy distributed ledger.
+    Call with: timeit.time.thread_time
+    thread_time() -> float
 
-        It is IMPORTANT for current version POST Schema in Ledger and after that GET it from Ledger
-        with correct seq_no to save compatibility with Ledger.
-        After that can call indy_issuer_create_and_store_credential_def to build corresponding Credential Definition.
+    Thread time for profiling: sum of the kernel and user-space CPU time.
+    -----
 
-        :param issuer_did: DID of schema issuer
-        :param name: a name the schema
-        :param version: a version of the schema
-        :param attrs: a list of schema attributes descriptions (the number of attributes should be less or equal than 125)
-        :return:
-           schema_id: identifier of created schema
-            schema_json: schema as json
+    Call with: timeit.time.thread_time_ns
+    thread_time() -> int
+
+    Thread time for profiling as nanoseconds:
+    sum of the kernel and user-space CPU time.
+    
     ```
