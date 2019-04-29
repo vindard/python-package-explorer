@@ -11,15 +11,9 @@ A small tool I built to explore through the various methods in the `python3-indy
 
 1. Assign to variable `$ i = IndyMethods()`
 
-1. Assign methods:
-    ```
-    find = i.find
-    print_docstrings = i.print_docstrings
-    ```
- 
 1. Pass search strings to see results. Example:
     ```
-    $ find('schema')
+    $ i.find('schema')
     
     [{'issuer_create_schema': 'anoncreds'},
      {'build_get_schema_request': 'ledger'},
@@ -28,7 +22,7 @@ A small tool I built to explore through the various methods in the `python3-indy
   
     ```
     ```
-    $ print_docstrings('create_schema')
+    $ i.describe('create_schema')
     
     {'issuer_create_schema': 'anoncreds'}
     Call with: indy.anoncreds.issuer_create_schema
