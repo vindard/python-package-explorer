@@ -37,7 +37,7 @@ class Explore():
 			line2 = docstrings_dict[m]['docstring']
 			linesep = f"-----\n\n"
 			result += f"{line1}\n{line2}\n{linesep}"
-		result = result[:-(len(linesep)+2)]   # trim last linesep
+		result = result[:-len(linesep)]   # trim last linesep
 
 		return result
 
