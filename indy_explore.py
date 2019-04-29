@@ -28,7 +28,7 @@ class IndyMethods():
 				}
 		return descriptions
 
-	def print_docstrings(self, regex):
+	def get_docstrings(self, regex):
 		b, _b = '\033[1m', '\033[0m'
 		docstrings_dict = self.__find_w_docstring(regex)
 		result = ''
@@ -38,6 +38,9 @@ class IndyMethods():
 			linesep = f"-----\n\n"
 			result += f"{line1}\n{line2}\n{linesep}"
 		result = result[:-(len(linesep)+2)]   # trim last linesep
-		print(result)
+
 		return result
+
+	def describe(self, regex):
+		print(self.get_docstrings(regex))
 
