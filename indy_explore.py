@@ -31,8 +31,13 @@ class IndyMethods():
 	def print_docstrings(self, regex):
 		b, _b = '\033[1m', '\033[0m'
 		docstrings_dict = self.__find_w_docstring(regex)
+		result = ''
 		for m in docstrings_dict:
-			print(f"{b}Call with: indy.{docstrings_dict[m]['module']}.{m}{_b}")
-			print(docstrings_dict[m]['docstring'])
-			print('-----\n')
+			line1 = f"{b}Call with: indy.{docstrings_dict[m]['module']}.{m}{_b}"
+			line2 = docstrings_dict[m]['docstring']
+			linesep = f"-----\n\n"
+			result += f"{line1}\n{line2}\n{linesep}"
+		result = result[:-(len(linesep)+2)]   # trim last linesep
+		print(result)
+		return result
 
