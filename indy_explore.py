@@ -1,10 +1,10 @@
-import indy
 import re, json
 
 class IndyMethods():
 
-	def __init__(self):
-		self.methods_ = {j: i for i in dir(indy) for j in dir(getattr(indy, i))}
+	def __init__(self, package):
+		self.package = package
+		self.methods_ = {j: i for i in dir(self.package) for j in dir(getattr(self.package, i))}
 
 	def find(self, regex):
 		results = {}
@@ -16,7 +16,7 @@ class IndyMethods():
 		return results
 
 	def __docstring(self, k, v):
-		return getattr(getattr(indy, v), k).__doc__
+		return getattr(getattr(self.package, v), k).__doc__
 
 	def __find_w_docstring(self, regex):
 		results = self.find(regex)
@@ -33,7 +33,7 @@ class IndyMethods():
 		docstrings_dict = self.__find_w_docstring(regex)
 		result = ''
 		for m in docstrings_dict:
-			line1 = f"{b}Call with: indy.{docstrings_dict[m]['module']}.{m}{_b}"
+			line1 = f"{b}Call with: self.package.{docstrings_dict[m]['module']}.{m}{_b}"
 			line2 = docstrings_dict[m]['docstring']
 			linesep = f"-----\n\n"
 			result += f"{line1}\n{line2}\n{linesep}"
