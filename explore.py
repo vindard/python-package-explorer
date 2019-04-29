@@ -33,11 +33,11 @@ class Explore():
 		docstrings_dict = self.__find_w_docstring(regex)
 		result = ''
 		for m in docstrings_dict:
-			line1 = f"{b}Call with: self.package.{docstrings_dict[m]['module']}.{m}{_b}"
+			line1 = f"\n{b}Call with: {self.package.__name__}.{docstrings_dict[m]['module']}.{m}{_b}\n"
 			line2 = docstrings_dict[m]['docstring']
-			linesep = f"-----\n\n"
-			result += f"{line1}\n{line2}\n{linesep}"
-		result = result[:-len(linesep)]   # trim last linesep
+			linesep = f"\n\n-----\n"
+			result += f"{linesep}{line1}{line2}"
+		result = result[len(linesep):]   # trim last linesep
 
 		return result
 
