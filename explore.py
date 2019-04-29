@@ -1,6 +1,6 @@
 import re, json
 
-class IndyMethods():
+class Explore():
 
 	def __init__(self, package):
 		self.package = package
